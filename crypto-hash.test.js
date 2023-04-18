@@ -1,4 +1,4 @@
-const { cryptoHash } = require('.crypto-hash');
+const cryptoHash = require('./crypto-hash');
 
 describe('cryptoHash()', () => {
   const hash = cryptoHash('foo');
@@ -10,6 +10,8 @@ describe('cryptoHash()', () => {
   });
 
   test('check if order of inputs change hash', () => {
-    expect(cryptoHash('foo', 'boo', 'faa')).toEqual('faa', 'foo', 'boo');
+    expect(cryptoHash('doo', 'boo', 'faa')).toEqual(
+      cryptoHash('faa', 'doo', 'boo')
+    );
   });
 });
