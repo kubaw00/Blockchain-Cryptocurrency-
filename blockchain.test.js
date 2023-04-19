@@ -51,7 +51,6 @@ describe('Blockchain', () => {
       });
       describe('and the chain does not contain any invalid fields', () => {
         test('returns true', () => {
-          blockchain.chain[2].data = 'invalid-field';
           expect(Blockchain.isValidChain(blockchain.chain)).toBe(true);
         });
       });
