@@ -72,10 +72,19 @@ describe('block', () => {
         '0'.repeat(minedBlock.difficulty)
       );
     });
+
+    test('adjust the difficulty', () => {
+      const possibleResults = [
+        lastBlock.difficulty + 1,
+        lastBlock.difficulty - 1,
+      ];
+
+      expect(possibleResults.includes(minedBlock.difficulty)).toBe(true);
+    });
   });
 
   describe('adjustDiffuculty()', () => {
-    test('raises diffuculty for the quickly mined block', () => {
+    test('raises difficulty for the quickly mined block', () => {
       expect(
         Block.adjustDifficulty({
           originalBlock: block,
@@ -83,13 +92,19 @@ describe('block', () => {
         })
       ).toEqual(block.difficulty + 1);
     });
-    test('lowers diffuculty for the quickly mined block', () => {
+    test('lowers difficulty for the quickly mined block', () => {
       expect(
         Block.adjustDifficulty({
           originalBlock: block,
           timestamp: block.timestamp + MINE_RATE + 100,
         })
       ).toEqual(block.difficulty - 1);
+    });
+
+    test('has a lower limit of 1', () => {
+      block.difficulty = -1;
+
+      expect(Block.adjustDifficulty({ originalBlock: block })).toBe(1);
     });
   });
 });
