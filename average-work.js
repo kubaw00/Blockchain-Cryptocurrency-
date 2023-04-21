@@ -21,7 +21,7 @@ for (let i = 0; i < 1000; i++) {
 
   average = times.reduce((acc, curr) => acc + curr, 0) / times.length;
 
-  console.log(
-    `Time to mine block:  ${timeDiff}ms. Difficulty: ${nextBlock.difficulty}. Average time: ${average} `
-  );
+  // console.log(
+  //   `Time to mine block:  ${timeDiff}ms. Difficulty: ${nextBlock.difficulty}. Average time: ${average} `
+  // );
 }
