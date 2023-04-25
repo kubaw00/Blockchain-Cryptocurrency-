@@ -7,7 +7,7 @@ class Wallet {
     this.balance = INITIAL_BALLANCE;
 
     this.keyPair = ec.genKeyPair();
-    this.publicKey = keyPair.getPublic().encode('hex');
+    this.publicKey = this.keyPair.getPublic().encode('hex');
   }
   sign(data) {
     return this.keyPair.sign(crytpoHash(data));
